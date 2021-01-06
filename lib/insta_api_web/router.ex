@@ -19,6 +19,12 @@ defmodule InstaApiWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/healthcheck", InstaApiWeb do
+    pipe_through :browser
+
+    get "/", IndexController, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", InstaApiWeb do
   #   pipe_through :api
