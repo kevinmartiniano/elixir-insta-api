@@ -19,6 +19,12 @@ defmodule InstaApiWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/photos", InstaApiWeb do
+    pipe_through :browser
+
+    get "/", PhotosController, :index
+  end
+
   scope "/healthcheck", InstaApiWeb do
     pipe_through :browser
 
