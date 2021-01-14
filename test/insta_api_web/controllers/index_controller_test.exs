@@ -3,6 +3,9 @@ defmodule InstaApiWeb.IndexControllerTest do
 
   test "GET /healthcheck", %{conn: conn} do
     conn = get(conn, "/healthcheck")
-    assert conn.resp_body =~ "Success!"
+
+    assert %{
+      "message" => "Success!",
+    } = json_response(conn, 200)
   end
 end
