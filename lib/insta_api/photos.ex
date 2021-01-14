@@ -1,18 +1,14 @@
 defmodule InstaApi.Photos do
-  use Ecto.Schema
-  import Ecto.Changeset
+  @moduledoc """
+  The Photos Context
+  """
 
-  schema "photos" do
-    field :caption, :string
-    field :image_url, :string
+  import Ecto.Query, warn: false
 
-    timestamps()
-  end
+  alias InstaApi.Repo
+  alias InstaApi.Schema.Photos.Photo
 
-  @doc false
-  def changeset(photos, attrs) do
-    photos
-    |> cast(attrs, [:image_url, :caption])
-    |> validate_required([:image_url, :caption])
+  def list_photos do
+    Repo.all(Photo)
   end
 end
